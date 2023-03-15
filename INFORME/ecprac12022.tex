@@ -170,7 +170,6 @@ En este informe documentamos las tareas realizadas en la primera práctica de Es
 
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
 		El circuito funciona adecuadamente. Tiene un área utilizada de 136 unidades y un tiempo de retardo de 37T para el carry y 34T para la suma.
 
 	\subsection{TAREA 5: Implementación alternativa al CPA}
@@ -201,16 +200,16 @@ En este informe documentamos las tareas realizadas en la primera práctica de Es
 
 
 		\subsubsection*{Análisis de resultados}
-		El circuito funciona adecuadamente. Tiene un área de 168 unidades, ya que estos Full Adders son de mayor área, y un tiempo de retardo de 32T en carry y 29T en la suma.
+		El circuito funciona adecuadamente. Tiene un área de 168 unidades, ya que estos Full Adders son de mayor área, y un tiempo de retardo de 32T en carry y 28T en la suma.
 	\subsection{TAREA 6: Tiempos de retardo del CPA}
-		%TODO
 		\subsubsection*{Especificación}
 		Indicad las fórmulas que describen los tiempos de retardo del circuito digital Carry Propagate Adder (CPA) de 4 bits implementado en las tareas anteriores.
 		Aplicando esa fórmula, mostrad los tiempos de retardo que introduciría un CPA de 8 bits, 16 bits, 32 bits, 64 bits y 128 bits para cada una de las dos posibles implementaciones de Full Adder (FA) de 1 bit consideradas en las tareas anteriores \textbf{(0.75P)}
 
 		\subsubsection*{Diseño}
-		En ambos diseños, el retardo del CPA depende de lo que tarde en propagarse el Carry. En el primer diseño, tenemos que el primer carry tarda 7T en estabilizarse, debido a que depende de que se estabilice la primera puerta XOR. Para el resto de puertas, esto ocurrirá en paralelo. Entonces, la función será $ T(n)=7+(n-1)*(7-3) $. 
-
+		En ambos diseños, el retardo del CPA depende de lo que tarde en propagarse el Carry. En el primer diseño, tenemos que el primer carry tarda 13T en generarse, y la primera suma ocurrirá en paral·lelo a la propagación del carry. $ TC(n) = 13 + (n-1 bits) * (13-5) $
+		
+		%TODO
 		En el segundo diseño, como el carry no depende de ningún cálculo de S, tendrá un tiempo de retardo de $ T(n)=n*8 $, donde 4T es el retardo de la salida del carry. 
 
 	\subsection{TAREA 7: CPA de 16 bits}
@@ -248,7 +247,7 @@ En este informe documentamos las tareas realizadas en la primera práctica de Es
 
 
 		\subsubsection*{Análisis de resultados}
-		El circuito funciona adecuadamente. Tiene un área de 544 y un tiempo de retraso de T. %TODO
+		El circuito funciona adecuadamente. Tiene un área de 544 y un tiempo de retraso de 133T. Hace falta notar que el TKGate crashea al intentar calcular el camino crítico.  
 
 	
 	\subsection{TAREA 8}
@@ -328,8 +327,7 @@ En este informe documentamos las tareas realizadas en la primera práctica de Es
 
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
-		El circuito funciona adecuadamente. Tiene un área de 312 unidades y un tiempo de retardo de 30 T.
+		El circuito funciona adecuadamente. Tiene un área de 312 unidades y un tiempo de retardo de 40T del Carry y 37T en la suma.
 
 	\subsection{TAREA 10: CSA de 16 bits}
 		\subsubsection*{Especificación}
@@ -366,8 +364,7 @@ En este informe documentamos las tareas realizadas en la primera práctica de Es
 
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
-		El circuito funciona adecuadamente. Tiene una área de 1248 unidades, y un tiempo de retardo de 36 T.
+		El circuito funciona adecuadamente. Tiene una área de 1248 unidades, y un tiempo de retardo de 46T del Carry y 43T de la suma.
 
 \section{FASE 4: Sumadores CLA}
 	\subsection{TAREA 11: Partial Full Adder}
@@ -404,8 +401,7 @@ En este informe documentamos las tareas realizadas en la primera práctica de Es
 
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
-		El circuito funciona adecuadamente. Tiene un área de 28 unidades y un tiempo de retardo de 8 para la suma, propagate y generate. 
+		El circuito funciona adecuadamente. Tiene un área de 28 unidades y un tiempo de retardo de 10T para la suma y 4T para la propagación y la generación.
 
 	\subsection{TAREA 12: Carry Look-Ahead Adder}
 		\subsubsection*{Especificación}
@@ -447,9 +443,8 @@ lógicas utilizadas son de AND=4T, OR=4T y XOR=5T. (0.75P)
 
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
-		El circuito funciona adecuadamente. Tiene un área de 272 unidades y un tiempo de retardo de 13 T.
-9.
+		El circuito funciona adecuadamente. Tiene un área de 272 unidades y un tiempo de retardo de G y P de 4T, de los Carry a 8T, y 10T-5T ya que una XOR por una en paralelo, para un total de 17T.
+
 
 	\subsection{TAREA 13: CLA de 16 bits}
 		\subsubsection*{Especificación}
@@ -486,8 +481,7 @@ la siguiente figura. Indicad los tiempos de retardo y el área utilizada. (0.75P
 
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
-				El circuito funciona adecuadamente. Tiene un área de 1248 unidades y un tiempo de retardo de 25 T.
+				El circuito funciona adecuadamente. Tiene un área de 1248 unidades y un tiempo de retardo de 8T para PG, 12T para PG, 30T para la suma y 25T para el carry.
 
 
 	\subsection{TAREA 14}
@@ -496,7 +490,7 @@ la siguiente figura. Indicad los tiempos de retardo y el área utilizada. (0.75P
 		Ahead Adder (CLA) de 16 bits implementado en la tarea anterior. (1P)
 
 		\subsubsection*{Análisis de resultados}
-		%TODO
+		Las señales p y g tienen 4T, mientras que PG y PP 12T. S0 tiene 10T, y de S1..S3 17T. De C1..C3 12 T. C4 son 16T. C8,12,16 20T. C9..C11,C13..C15 tiene 25T. S4 tiene 21T. S5..S7 26T. S8, S12 25T, y S9..S11,S13..S15 30T.
 
 	\subsection{TAREA 15: Comparación entre CPA, CSA y CLA}
 		\subsubsection*{Especificación}
